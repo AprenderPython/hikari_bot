@@ -42,7 +42,7 @@ def ranking_s (update, context):
 
 def bot_ranking (update, context):
     listado = r.sacar_ranking ()
-    context.bot.send_message(chat_id=update.effective_chat.id, text=(listado))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=(listado), parse_mode="Markdown")
 
 start_handler = CommandHandler('start', start)
 random_temas = CommandHandler('rtemas', random_temas)

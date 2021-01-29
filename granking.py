@@ -16,5 +16,12 @@ def sacar_ranking():
     df = pandas.DataFrame(data, columns=headers)
     df['Puntos Acumulados'] = df['Puntos Acumulados'].astype(int)
     ranking=df.sort_values(["Puntos Acumulados"], ascending=False)[["Nombre","Puntos Acumulados"]]
+    print (ranking)
+    print (type(ranking))
+    ranking=ranking.values.tolist()
 
-    return str(ranking)
+    texto_mostrar = ""
+    for p in ranking:
+        texto_mostrar += f"*{p[0]}* con _{p[1]} puntos_.\n"
+
+    return texto_mostrar
