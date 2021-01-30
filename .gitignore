@@ -3,3 +3,6 @@ credentials/token.txt
 credentials/key_drive_google.txt
 credentials/credenciales.txt
 credentials/bd-sheet.json
+*.ipynb
+credentials/*.json
+*.pyc
