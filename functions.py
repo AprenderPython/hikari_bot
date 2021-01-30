@@ -9,7 +9,6 @@ def programs_weekly():
     worksheet = sh.sheet1
     re = worksheet.get_all_values()
     
-    print(re)
-programs_weekly()
+    return(re)
 
     
