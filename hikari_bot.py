@@ -1,27 +1,23 @@
 #version:0.1
-import logging
-import random
+"""
+Alias del bot: @LordHikariBot
+
+Ayuda:
+https://python-telegram-bot.readthedocs.io/en/stable/
+https://docs.google.com/spreadsheets/d/1W4dxhCViCFgArafr1uuHSsutHIwFGscgwBORJidZ0Qk/edit#gid=0
+"""
+
 from telegram.ext import Updater, CommandHandler, Filters
+import functions
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
-
-token = input("Ingresa el token del bot:-->")
+token = "" #aqui falta leer el token
 updater = Updater(token=token, use_context=True)
 
+#Commands
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hola Humano")
 
-def random_temas(update, context):
-    randomT = ["webscraping", "forense", "redes", "hacking", "criptografia"]
-    randomT = random.sample(randomT, k=4)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=(randomT))
-
+#Listeners 
 start_handler = CommandHandler('start', start)
-random_temas = CommandHandler('rtemas', random_temas)
-
 updater.dispatcher.add_handler(start_handler)
-updater.dispatcher.add_handler(random_temas)
-
 updater.start_polling()
-#https://python-telegram-bot.readthedocs.io/en/stable/
