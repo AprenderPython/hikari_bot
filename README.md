@@ -7,5 +7,6 @@ https://github.com/users/AprenderPython/projects/2
 
 Aunque las funciones esten creadas siempre pueden tener bugs o mejoras.
 
-Librerias externas necesarias:
-    python-telegram-bot
+Comandos:
+/Start
+    Despierta el bot y recibe un saludo
