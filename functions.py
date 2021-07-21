@@ -1,23 +1,74 @@
 import gspread
 import pandas
-#test
-def programs_weekly():
-    
-    gc = gspread.service_account(filename="credentials/bd-sheet.json")
-    key = open("credentials/key_drive_google.txt").read()
-    sh = gc.open_by_key(key)
-    
-    worksheet = sh.sheet1
-    re = worksheet.get_all_values()
-    
-    return(re)
 
-def generar_ranking():
+""" Gestion de contenidos """
+#Añadir nuevos retos y programas
+#Eliminar retos y programas
+
+""" Lectura de contenidos """
+#Mostrar las categorias (ej: webscraping, hacking, etc...)
+#Mostrar los programas organizados por categoria (solo nombre)
+#Mostrar los detalles del programa
+
+gc = gspread.service_account(filename="credentials/database.json")
+key = open("credentials/key_drive_google.txt").read()
+
+
+def showidprograms(category, gc=gc, key=key):
+    
+    sh = gc.open_by_key(key)
+    program_sheet = sh.sheet1
+    list_of_dicts = program_sheet.get_all_records()
+
+    category_programs = program_sheet.col_values(5)
+    if str(category) in category_programs:
+        search = ""
+        for program in list_of_dicts:
+            if category == program["AREA"]:
+                id = program["ID"]
+                name = program["NOMBRE"]
+                search = (search + f"\n>▪️ID:{id} Reto:{name}")
+        return search
+    else:
+        return "Aun no existe esta categoria..."
+    
+def detailprogram(id, gc=gc, key=key):
+    "Tomar un programa de la db si existe y retornarla"
+    
+    sh = gc.open_by_key(key)
+    program_sheet = sh.sheet1
+    
+    id = id + 1
+
+    id_programs = program_sheet.col_values(1)
+    if str(id) in id_programs:
+        program = program_sheet.row_values(int(id))
+        
+        id = program[0]
+        title = program[1]
+        level = program[2]
+        details = program[3]
+        category = program[4]
+        
+        texto = (f"<b>🔸{title}🔸</b>\n\n"
+            f"{details}\n\n"
+            f"<b>Categoria:</b> <code>{category}</code>\n"
+            f"<b>Dificultad:</b> <code>{level}</code>\n"
+            f"<b>ID:</b> <code>{id}</code>\n")
+
+        return texto
+    else:
+        program = ("😅 Este programa aun no ha sido creado.")
+    return program
+
+
+def generar_ranking(): #Esta funcion aun esta en desarrollo
+
     """ generar_ranking(): lee una libro de google sheet, coje los datos, y los formatea para presentarlos en telegram
     """
 
     # abrir google sheet
-    gc = gspread.service_account(filename="credentials/bd-sheet.json")
+    gc = gspread.service_account(filename="credentials/database.json")
     key = open("credentials/key_drive_google.txt").read()
     wks = gc.open_by_key(key)
 
@@ -45,3 +96,5 @@ def generar_ranking():
         texto_mostrar += f"*{p[0]}* con _{p[1]} puntos_.\n"
 
     return texto_mostrar
+
+
