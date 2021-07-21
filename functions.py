@@ -6,9 +6,6 @@ import pandas
 #Eliminar retos y programas
 
 """ Lectura de contenidos """
-#Mostrar las categorias (ej: webscraping, hacking, etc...)
-#Mostrar los programas organizados por categoria (solo nombre)
-#Mostrar los detalles del programa
 
 gc = gspread.service_account(filename="credentials/database.json")
 key = open("credentials/key_drive_google.txt").read()
