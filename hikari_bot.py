@@ -79,6 +79,7 @@ def help(update, context):
     "ej: /showp 8  (los ids lo ves con /showall <categoria>)\n"
     "/help - Si tienes alguna duda podes volver aqui :)\n\n"
     "Cualquier duda o bug puedes reportarlo a @dark_zly o a la comunidad @aprenderpython"
+    "\n\n Code: https://github.com/AprenderPython/hikari_bot"
     )
     context.bot.send_message(chat_id=update.effective_chat.id, text=help)
 
