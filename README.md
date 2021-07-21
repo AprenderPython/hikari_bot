@@ -18,11 +18,11 @@ https://github.com/users/AprenderPython/projects/2
 
 Crear directorio llamado credentials y dentro añadir estos archivos:
 
-token.txt   -   Codigo token del bot
+`token.txt`  -   Codigo token del bot
 
-key_drive_google.txt   -  La key del sheet de google (esta en la url)
+`key_drive_google.txt`   -  La key del sheet de google (esta en la url)
 
-database.json  - Credenciales de la cuenta de servicio del sheet de google.
+`database.json` - Credenciales de la cuenta de servicio del google sheet.
 
 
 Cualquier bug o mejora reportarlo en @AprenderPython en Telegram
