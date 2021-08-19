@@ -1,5 +1,5 @@
 import gspread
-import pandas
+#import pandas
 
 """ Gestion de contenidos """
 #Añadir nuevos retos y programas
@@ -58,11 +58,11 @@ def detailprogram(id, gc=gc, key=key):
         program = ("😅 Este programa aun no ha sido creado.")
     return program
 
-
+"""
 def generar_ranking(): #Esta funcion aun esta en desarrollo
 
-    """ generar_ranking(): lee una libro de google sheet, coje los datos, y los formatea para presentarlos en telegram
-    """
+    # generar_ranking(): lee una libro de google sheet, coje los datos, y los formatea para presentarlos en telegram
+   
 
     # abrir google sheet
     gc = gspread.service_account(filename="credentials/database.json")
@@ -94,4 +94,4 @@ def generar_ranking(): #Esta funcion aun esta en desarrollo
 
     return texto_mostrar
 
-
+"""
